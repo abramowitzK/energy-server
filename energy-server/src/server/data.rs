@@ -24,7 +24,7 @@ impl Queryable for JsonBackedQueryable {
         let iter = self.data.iter();
         let mut energy_counter: f64 = 0.0;
         for record in iter {
-            if record.time > time2 {
+            if record.time >= time2 {
                 break;
             }
             if record.time < time1 {
