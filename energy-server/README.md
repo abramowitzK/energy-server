@@ -1,6 +1,6 @@
 # Energy Server!
 
-I decided to do this project in Rust due to personal interest and thinking it would be the best tool for the job especially for performance and sfuture scalability. I utilized the Iron web framework and the serde serialization/deserialization library.
+I decided to do this project in Rust due to personal interest and thinking it would be the best tool for the job especially for performance and future scalability. I utilized the Iron web framework and the serde serialization/deserialization library.
 
 There is some error handling but I did not defend against malicious input so passing incorrect datatypes as parameters might crash the server.
 
