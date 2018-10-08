@@ -34,7 +34,7 @@ impl Queryable for JsonBackedQueryable {
             energy_counter += (record.current*record.voltage) as f64;
         }
         // Convert to Wh
-        energy_counter = energy_counter / 3600.0;
+        energy_counter /= 3600.0;
         // Wh to kWh
         energy_counter /= 1000.0;
         Ok(energy_counter)
@@ -56,6 +56,7 @@ impl JsonBackedQueryable {
             }
             Result::Ok(val) => {
                 println!("Read {} bytes from data file", val);
+                // Parse data as array and sort by time to make querying faster
                 let mut data: Vec<Record> = from_str(json_string.as_ref()).unwrap();
                 data.sort_by(|a, b| a.time.cmp(&b.time));
                 data
