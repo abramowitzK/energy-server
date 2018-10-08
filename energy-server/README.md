@@ -1,27 +1,15 @@
 # Energy Server!
 
-MD processes lots of power data and what we need is a server that tells us the 
-total amount of energy metered by a system for a given timeframe.  A series of 
-sensor data values (time in seconds, voltage in volts, and current in amps) are 
-located in the file "sensors.json", and the server should respond with an approximate 
-value for kWh measured over the given interval.
+I decided to do this project in Rust due to personal interest and thinking it would be the best tool for the job especially for performance and sfuture scalability. I utilized the Iron web framework and the serde serialization/deserialization library.
 
-It need not be fast, but the code should be readable, and the results should be correct.
+There is some error handling but I did not defend against malicious input so passing incorrect datatypes as parameters might crash the server.
 
-## Expected Behavior
+# Building
 
-  $ ./energy-server &
-  [1] 21507
-  $ curl -d "starttime=1234&endtime=5678" http://localhost:8080/
-  {"results":{"energy":307.668,"units":"kWh"}}
-  $
+First you'll need to install the latest stable Rust compiler from here if you don't already have it: https://www.rust-lang.org/en-US/install.html
 
-## Notes
+I tested on 1.29.1 stable on both Mac and Windows.
 
-Given that file, it took one of us about an hour to implement something that
-worked correctly. You're welcome to take it however far you want, but we're
-expecting something along those lines.
+Once that's installed, just run `cargo run` from inside this directory (same level as the Cargo.toml file and the src directory) and it should pull and compile all dependencies and run the server on port 8080
 
-And if there's anything special we have to do to run your program, just let us
-know. A Makefile never hurt anyone.
-
+This will set your working directory and the server will be able to find the json file there.
