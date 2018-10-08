@@ -2,6 +2,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use serde_json::from_str;
 use std::marker::Send;
+// Struct matching the layout of the json for strong typing
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Record {
     pub current: i32,

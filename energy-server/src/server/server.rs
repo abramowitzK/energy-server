@@ -2,6 +2,7 @@ use server::data::Queryable;
 use iron::prelude::*;
 use iron;
 use std::sync::Mutex;
+
 pub struct Server<T> {
     data: Mutex<T>
 }
@@ -15,7 +16,7 @@ impl <T: 'static + Queryable> Server<T>{
         Server { data: Mutex::new(data_source)}
     }
     pub fn start(self) {
-
+        // Define a handler to handle all requests to the server. Not handling bad data at all
         Iron::new(move |req : &mut Request| -> IronResult<Response> {
                 use params::Params;
                 use params::FromValue;
